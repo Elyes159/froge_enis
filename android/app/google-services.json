@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1026182273892",
+    "project_id": "nids-de-poule-1028d",
+    "storage_bucket": "nids-de-poule-1028d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026182273892:android:47a9f91eb42356dde6b871",
+        "android_client_info": {
+          "package_name": "com.example.froge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTV0bqK1r3Kbgrn-57nDcrFlayyLneAgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

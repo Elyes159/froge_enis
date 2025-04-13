@@ -1,0 +1,2 @@
+/Users/elyes/Desktop/froge/android/app/.cxx/Debug/6m1p6ri3/x86/CMakeFiles/edit_cache.dir
+/Users/elyes/Desktop/froge/android/app/.cxx/Debug/6m1p6ri3/x86/CMakeFiles/rebuild_cache.dir
