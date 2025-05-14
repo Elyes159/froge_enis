@@ -24,10 +24,14 @@ class _PotholeDetectionScreenState extends State<PotholeDetectionScreen> {
   late Position _currentPosition;
   late StreamSubscription<AccelerometerEvent> _accelerometerSubscription;
   
-  final double _impactThreshold = 40.0; // Seuil d'accélération pour un impact (en m/s²)
-  final double _vibrationThreshold = 10; // Seuil pour les vibrations continues
-  final int _impactDurationMs = 100; // Durée maximale d'un impact (ms)
-  final int _cooldownDurationMs = 2000; // Temps entre deux détections (ms)
+  final double _impactThreshold = 40.0; 
+  //But : différencier les vrais chocs des simples vibrations normales.
+  final double _vibrationThreshold = 10;
+  // But : capter non seulement les gros chocs, mais aussi les dégradations continues de la route.
+  final int _impactDurationMs = 100;
+   // But : filtrer les événements trop longs pour être de vrais "chocs".
+  final int _cooldownDurationMs = 2000;
+   //But : éviter d'enregistrer plusieurs fois le même nid-de-poule ou les vibrations tout de suite après un choc.
   
   DateTime _lastDetectionTime = DateTime.now();
   List<double> _accelHistory = [];
@@ -228,7 +232,7 @@ class _PotholeDetectionScreenState extends State<PotholeDetectionScreen> {
         'longitude': lon,
         'imageUrl': imageUrl,
         'timestamp': Timestamp.now(),
-        'type': 'automatic_detection',
+        
       });
       print("📍 Nid-de-poule enregistré à ($lat, $lon) avec photo !");
     } catch (e) {
@@ -248,14 +252,15 @@ Widget build(BuildContext context) {
   return Scaffold(
     body: Stack(
       children: [
+        
         Positioned.fill(child: CameraPreview(_cameraController!)),
         
         // Overlay semi-transparent
-        Positioned.fill(
-          child: Container(
-            color: Colors.black.withOpacity(_isDetecting ? 0.4 : 0.2),
-          ),
-        ),
+        // Positioned.fill(
+        //   child: Container(
+        //     color: Colors.black.withOpacity(_isDetecting ? 0.4 : 0.2),
+        //   ),
+        // ),
 
         // Top bar
         Positioned(
@@ -302,6 +307,7 @@ Widget build(BuildContext context) {
             duration: Duration(milliseconds: 300),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
+              // ignore: deprecated_member_use
               color: _isDetecting ? Colors.red.withOpacity(0.7) : Colors.black.withOpacity(0.6),
               borderRadius: BorderRadius.circular(16),
             ),
